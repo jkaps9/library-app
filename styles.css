@@ -67,14 +67,18 @@ main {
 .card>button {
     appearance: none;
     border: none;
-    background-color: pink;
-    color: darkred;
-    padding: 8px 20px;
     border-radius: 10px;
     font-size: 0.7rem;
-    font-weight: bold;
     cursor: pointer;
     text-transform: uppercase;
+    background: none;
+}
+
+.card>button#remove {
+    padding: 8px 20px;
+    background-color: pink;
+    color: darkred;
+    font-weight: bold;
     position: absolute;
     bottom: 15px;
     right: 15px;

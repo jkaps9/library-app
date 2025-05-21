@@ -35,10 +35,14 @@ function displayBooks() {
             removeArrayElement(deleteButton.parentElement.getAttribute('data-id'));
         });
 
+        const toggleReadButton = document.createElement("button");
+        toggleReadButton.textContent = book.isRead ? "read" : "unread";
+
         bookCard.setAttribute('data-id', book.id);
 
         bookCard.appendChild(title);
         bookCard.appendChild(information);
+        bookCard.appendChild(toggleReadButton);
         bookCard.appendChild(deleteButton);
         bookContainer.append(bookCard);
     });
