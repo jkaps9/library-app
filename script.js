@@ -44,11 +44,10 @@ const bookRead = addBookDialog.querySelector("#isRead");
 addBookButton.addEventListener('click', () => addBookDialog.showModal());
 
 addBookDialog.addEventListener("close", () => {
-    if (addBookDialog.returnValue === "default") {
+    if (addBookDialog.returnValue === "Normal close") {
         console.log("No return value.");
     }
     else {
-        console.log(`ReturnValue: ${addBookDialog.returnValue}.`);
         addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value, bookRead.value);
         displayBooks();
     } // Have to check for "default" rather than empty string
@@ -59,10 +58,3 @@ confirmButton.addEventListener("click", (e) => {
     e.preventDefault();
     addBookDialog.close(`${bookTitle.value} by ${bookAuthor.value}`);
 });
-
-// addBookToLibrary('The Hobbit', "J.R.R. Tolkein", 295, true);
-// addBookToLibrary('The Fellowship of the Ring', "J.R.R. Tolkein", 350, true);
-// addBookToLibrary('Two Towers', "J.R.R. Tolkein", 375, true);
-// addBookToLibrary('Return of the King', "J.R.R. Tolkein", 400, false);
-
-// displayBooks();
