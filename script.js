@@ -28,10 +28,14 @@ function displayBooks() {
         const information = document.createElement("p");
         information.textContent = `by ${book.author}, ${book.numPages} pages`;
 
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Remove"
+
         bookCard.setAttribute('data-id', book.id);
 
         bookCard.appendChild(title);
         bookCard.appendChild(information);
+        bookCard.appendChild(deleteButton);
         bookContainer.append(bookCard);
     });
 }
