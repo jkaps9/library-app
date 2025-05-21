@@ -19,12 +19,12 @@
             <h2>My Books</h2>
             <button type="button" id="add-book">Add Book</button>
         </div>
-        <dialog id="add-book-dialog">
+        <dialog id="add-book-dialog" closedby="closerrequest">
             <h3>Add a book to your library</h3>
             <form>
                 <p>
                     <label for="title">Title</label>
-                    <input type="text" id="title" name="title" required>
+                    <input type="text" id="title" name="title" autofocus required>
                 </p>
                 <p>
                     <label for="author">Author</label>
@@ -36,11 +36,11 @@
                 </p>
                 <p>
                     <label for="isRead">Read</label>
-                    <input type="checkbox">
+                    <input type="checkbox" id="isRead" value="isRead">
                 </p>
                 <div>
                     <button value="cancel" formmethod="dialog">Cancel</button>
-                    <button id="confirmBtn" value="default">Confirm</button>
+                    <button id="confirm" value="default">Confirm</button>
                 </div>
             </form>
         </dialog>

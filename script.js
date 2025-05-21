@@ -16,6 +16,9 @@ function addBookToLibrary(title, author, numPages) {
 }
 
 function displayBooks() {
+    while (bookContainer.firstChild) {
+        bookContainer.removeChild(bookContainer.firstChild);
+    }
     myLibrary.forEach(book => {
         const bookCard = document.createElement("div");
         bookCard.classList.add("card");
@@ -32,13 +35,34 @@ function displayBooks() {
 
 const addBookButton = document.querySelector("#add-book");
 const addBookDialog = document.querySelector("#add-book-dialog");
-const confirmBtn = addBookDialog.querySelector("#confirmBtn");
+const confirmButton = addBookDialog.querySelector("#confirm");
+const bookTitle = addBookDialog.querySelector("#title");
+const bookAuthor = addBookDialog.querySelector("#author");
+const bookPages = addBookDialog.querySelector("#pages");
+const bookRead = addBookDialog.querySelector("#isRead");
 
 addBookButton.addEventListener('click', () => addBookDialog.showModal());
 
-addBookToLibrary('The Hobbit', "J.R.R. Tolkein", 295, true);
-addBookToLibrary('The Fellowship of the Ring', "J.R.R. Tolkein", 350, true);
-addBookToLibrary('Two Towers', "J.R.R. Tolkein", 375, true);
-addBookToLibrary('Return of the King', "J.R.R. Tolkein", 400, false);
+addBookDialog.addEventListener("close", () => {
+    if (addBookDialog.returnValue === "default") {
+        console.log("No return value.");
+    }
+    else {
+        console.log(`ReturnValue: ${addBookDialog.returnValue}.`);
+        addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value, bookRead.value);
+        displayBooks();
+    } // Have to check for "default" rather than empty string
+    //console.log(`ReturnValue: ${addBookDialog.returnValue}.`)
+});
 
-displayBooks();
+confirmButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    addBookDialog.close(`${bookTitle.value} by ${bookAuthor.value}`);
+});
+
+// addBookToLibrary('The Hobbit', "J.R.R. Tolkein", 295, true);
+// addBookToLibrary('The Fellowship of the Ring', "J.R.R. Tolkein", 350, true);
+// addBookToLibrary('Two Towers', "J.R.R. Tolkein", 375, true);
+// addBookToLibrary('Return of the King', "J.R.R. Tolkein", 400, false);
+
+// displayBooks();
