@@ -30,6 +30,10 @@ function displayBooks() {
 
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "Remove"
+        deleteButton.setAttribute('id', 'remove')
+        deleteButton.addEventListener('click', () => {
+            removeArrayElement(deleteButton.parentElement.getAttribute('data-id'));
+        });
 
         bookCard.setAttribute('data-id', book.id);
 
@@ -38,6 +42,16 @@ function displayBooks() {
         bookCard.appendChild(deleteButton);
         bookContainer.append(bookCard);
     });
+}
+
+function removeArrayElement(bookID) {
+    var index = myLibrary.map(function (e) {
+        return e.id;
+    }).indexOf(bookID);
+    if (index !== -1) {
+        myLibrary.splice(index, 1);
+    }
+    displayBooks();
 }
 
 const addBookButton = document.querySelector("#add-book");
@@ -51,14 +65,13 @@ const bookRead = addBookDialog.querySelector("#isRead");
 addBookButton.addEventListener('click', () => addBookDialog.showModal());
 
 addBookDialog.addEventListener("close", () => {
-    if (addBookDialog.returnValue === "Normal close") {
+    if (addBookDialog.returnValue === "default") {
         console.log("No return value.");
     }
     else {
         addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value, bookRead.value);
         displayBooks();
     } // Have to check for "default" rather than empty string
-    //console.log(`ReturnValue: ${addBookDialog.returnValue}.`)
 });
 
 confirmButton.addEventListener("click", (e) => {
