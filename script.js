@@ -3,10 +3,11 @@ const myLibrary = [];
 const bookContainer = document.querySelector("#library-container");
 console.log(bookContainer);
 
-function Book(title, author, numPages) {
+function Book(title, author, numPages, isRead) {
     this.title = title;
     this.author = author;
     this.numPages = numPages;
+    this.isRead = isRead;
     this.id = crypto.randomUUID();
 }
 
@@ -30,9 +31,9 @@ function displayBooks() {
     });
 }
 
-addBookToLibrary('The Hobbit', "J.R.R. Tolkein", 295);
-addBookToLibrary('The Fellowship of the Ring', "J.R.R. Tolkein", 350);
-addBookToLibrary('Two Towers', "J.R.R. Tolkein", 375);
-addBookToLibrary('Return of the King', "J.R.R. Tolkein", 400);
+addBookToLibrary('The Hobbit', "J.R.R. Tolkein", 295, true);
+addBookToLibrary('The Fellowship of the Ring', "J.R.R. Tolkein", 350, true);
+addBookToLibrary('Two Towers', "J.R.R. Tolkein", 375, true);
+addBookToLibrary('Return of the King', "J.R.R. Tolkein", 400, false);
 
 displayBooks();
