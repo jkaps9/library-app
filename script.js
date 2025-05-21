@@ -1,7 +1,6 @@
 const myLibrary = [];
 
 const bookContainer = document.querySelector("#library-container");
-console.log(bookContainer);
 
 function Book(title, author, numPages, isRead) {
     this.title = title;
@@ -32,8 +31,10 @@ function displayBooks() {
 }
 
 const addBookButton = document.querySelector("#add-book");
+const addBookDialog = document.querySelector("#add-book-dialog");
+const confirmBtn = addBookDialog.querySelector("#confirmBtn");
 
-addBookButton.addEventListener('click', () => console.log("Add book button clicked"));
+addBookButton.addEventListener('click', () => addBookDialog.showModal());
 
 addBookToLibrary('The Hobbit', "J.R.R. Tolkein", 295, true);
 addBookToLibrary('The Fellowship of the Ring', "J.R.R. Tolkein", 350, true);
