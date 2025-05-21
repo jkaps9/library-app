@@ -71,15 +71,24 @@ main {
     font-size: 0.7rem;
     cursor: pointer;
     text-transform: uppercase;
-    background: none;
+    font-weight: bold;
+    padding: 8px 20px;
+    position: absolute;
 }
 
 .card>button#remove {
-    padding: 8px 20px;
     background-color: pink;
     color: darkred;
-    font-weight: bold;
-    position: absolute;
     bottom: 15px;
     right: 15px;
+}
+
+.card>button[id="read"] {
+    bottom: 15px;
+    left: 15px;
+}
+
+.card>button[id="read"].read {
+    color: white;
+    background-color: green;
 }

@@ -10,8 +10,8 @@ function Book(title, author, numPages, isRead) {
     this.id = crypto.randomUUID();
 }
 
-function addBookToLibrary(title, author, numPages) {
-    let newBook = new Book(title, author, numPages);
+function addBookToLibrary(title, author, numPages, isRead) {
+    let newBook = new Book(title, author, numPages, isRead);
     myLibrary.push(newBook);
 }
 
@@ -37,7 +37,11 @@ function displayBooks() {
 
         const toggleReadButton = document.createElement("button");
         toggleReadButton.textContent = book.isRead ? "read" : "unread";
-
+        toggleReadButton.setAttribute('id', 'read');
+        console.log(book.isRead);
+        if (book.isRead) {
+            toggleReadButton.classList.add("read");
+        }
         bookCard.setAttribute('data-id', book.id);
 
         bookCard.appendChild(title);
@@ -73,7 +77,7 @@ addBookDialog.addEventListener("close", () => {
         console.log("No return value.");
     }
     else {
-        addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value, bookRead.value);
+        addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value, bookRead.checked);
         displayBooks();
     } // Have to check for "default" rather than empty string
 });
