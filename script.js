@@ -27,6 +27,9 @@ function displayBooks() {
         title.textContent = book.title;
         const information = document.createElement("p");
         information.textContent = `by ${book.author}, ${book.numPages} pages`;
+
+        bookCard.setAttribute('data-id', book.id);
+
         bookCard.appendChild(title);
         bookCard.appendChild(information);
         bookContainer.append(bookCard);
