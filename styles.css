@@ -86,6 +86,7 @@ main {
 .card>button[id="read"] {
     bottom: 15px;
     left: 15px;
+    background-color: #e6e6e6;
 }
 
 .card>button[id="read"].read {

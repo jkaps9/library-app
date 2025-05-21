@@ -38,9 +38,15 @@ function displayBooks() {
         const toggleReadButton = document.createElement("button");
         toggleReadButton.textContent = book.isRead ? "read" : "unread";
         toggleReadButton.setAttribute('id', 'read');
-        console.log(book.isRead);
+        toggleReadButton.addEventListener('click', () => {
+            book.toggleReadStatus();
+            displayBooks();
+        });
+
         if (book.isRead) {
             toggleReadButton.classList.add("read");
+        } else {
+            toggleReadButton.classList.remove("read");
         }
         bookCard.setAttribute('data-id', book.id);
 
@@ -60,6 +66,10 @@ function removeArrayElement(bookID) {
         myLibrary.splice(index, 1);
     }
     displayBooks();
+}
+
+Book.prototype.toggleReadStatus = function () {
+    this.isRead = !this.isRead;
 }
 
 const addBookButton = document.querySelector("#add-book");
