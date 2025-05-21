@@ -21,6 +21,28 @@ main {
     padding: 15px;
 }
 
+.sub-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+}
+
+.sub-header>button {
+    appearance: none;
+    border: none;
+    background-color: green;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.sub-header>button:hover {
+    background-color: rgb(1, 110, 1);
+}
+
 #library-container {
     display: grid;
     gap: 1rem;
