@@ -31,6 +31,10 @@ function displayBooks() {
     });
 }
 
+const addBookButton = document.querySelector("#add-book");
+
+addBookButton.addEventListener('click', () => console.log("Add book button clicked"));
+
 addBookToLibrary('The Hobbit', "J.R.R. Tolkein", 295, true);
 addBookToLibrary('The Fellowship of the Ring', "J.R.R. Tolkein", 350, true);
 addBookToLibrary('Two Towers', "J.R.R. Tolkein", 375, true);
