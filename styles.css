@@ -11,9 +11,7 @@ html {
 
 body {
     display: grid;
-    justify-content: center;
     grid-template-rows: auto 1fr;
-    grid-template-columns: 1fr;
 }
 
 header,
