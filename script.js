@@ -76,6 +76,7 @@ const addBookButton = document.querySelector("#add-book");
 const addBookDialog = document.querySelector("#add-book-dialog");
 const confirmButton = addBookDialog.querySelector("#confirm");
 const cancelButton = addBookDialog.querySelector("#cancel");
+const newBookForm = addBookDialog.querySelector("form");
 const bookTitle = addBookDialog.querySelector("#title");
 const bookAuthor = addBookDialog.querySelector("#author");
 const bookPages = addBookDialog.querySelector("#pages");
@@ -89,6 +90,7 @@ addBookDialog.addEventListener("close", () => {
     }
     else {
         addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value, bookRead.checked);
+        newBookForm.reset();
         displayBooks();
     }
 });
