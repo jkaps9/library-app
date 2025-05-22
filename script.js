@@ -75,6 +75,7 @@ Book.prototype.toggleReadStatus = function () {
 const addBookButton = document.querySelector("#add-book");
 const addBookDialog = document.querySelector("#add-book-dialog");
 const confirmButton = addBookDialog.querySelector("#confirm");
+const cancelButton = addBookDialog.querySelector("#cancel");
 const bookTitle = addBookDialog.querySelector("#title");
 const bookAuthor = addBookDialog.querySelector("#author");
 const bookPages = addBookDialog.querySelector("#pages");
@@ -83,16 +84,27 @@ const bookRead = addBookDialog.querySelector("#isRead");
 addBookButton.addEventListener('click', () => addBookDialog.showModal());
 
 addBookDialog.addEventListener("close", () => {
-    if (addBookDialog.returnValue === "default") {
+    if (addBookDialog.returnValue !== "default") {
         console.log("No return value.");
     }
     else {
         addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value, bookRead.checked);
         displayBooks();
-    } // Have to check for "default" rather than empty string
+    }
 });
 
 confirmButton.addEventListener("click", (e) => {
     e.preventDefault();
-    addBookDialog.close(`${bookTitle.value} by ${bookAuthor.value}`);
+    if (bookTitle.value === "") {
+        alert("missing book title");
+    } else if (bookAuthor.value === "") {
+        alert("missing author");
+    } else {
+        addBookDialog.close('default');
+    }
+});
+
+cancelButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    addBookDialog.close('cancel');
 });
