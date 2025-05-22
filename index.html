@@ -19,29 +19,28 @@
             <h2>My Books</h2>
             <button type="button" id="add-book">Add Book</button>
         </div>
-        <dialog id="add-book-dialog" closedby="none">
+        <dialog id="add-book-dialog" closedby="closerequest">
             <h3>Add a book to your library</h3>
             <form>
-                <p>
-                    <label for="title">Title</label>
-                    <input type="text" id="title" name="title" required>
-                </p>
-                <p>
-                    <label for="author">Author</label>
-                    <input type="text" id="author" name="author" required>
-                </p>
-                <p>
-                    <label for="pages">Number of Pages</label>
-                    <input type="number" id="pages" name="pages" min="1" step="1" value="1">
-                </p>
-                <p>
-                    <label for="isRead">Read</label>
-                    <input type="checkbox" id="isRead" value="isRead">
-                </p>
-                <div>
-                    <button id="cancel" value="cancel" formmethod="dialog">Cancel</button>
-                    <button id="confirm" value="default">Confirm</button>
-                </div>
+
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" required>
+
+
+                <label for="author">Author</label>
+                <input type="text" id="author" name="author" required>
+
+
+                <label for="pages">Pages</label>
+                <input type="number" id="pages" name="pages" min="1" step="1" value="1">
+
+
+                <label for="isRead">Read</label>
+                <input type="checkbox" id="isRead" value="isRead">
+
+
+                <button id="cancel" value="cancel" formmethod="dialog">Cancel</button>
+                <button id="confirm" value="default">Confirm</button>
             </form>
         </dialog>
         <div id="library-container">
