@@ -4,19 +4,29 @@
     box-sizing: border-box;
 }
 
-body,
-html {
-    height: 100%;
-}
-
 body {
-    display: grid;
-    grid-template-rows: auto 1fr;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    background-color: #e6e6e6;
 }
 
 header,
 main {
     padding: 15px;
+    width: 100%;
+    max-width: 1400px;
+}
+
+header {
+    flex: 0;
+}
+
+main {
+    flex: 1;
 }
 
 .sub-header {
