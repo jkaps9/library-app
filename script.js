@@ -1,25 +1,44 @@
-const myLibrary = [];
-
 const bookContainer = document.querySelector("#library-container");
 
-function Book(title, author, numPages, isRead) {
-    this.title = title;
-    this.author = author;
-    this.numPages = numPages;
-    this.isRead = isRead;
-    this.id = crypto.randomUUID();
+class Book {
+    id = crypto.randomUUID();
+
+    constructor(title, author, numPages, isRead) {
+        this.title = title;
+        this.author = author;
+        this.numPages = numPages;
+        this.isRead = isRead;
+    }
+
+    toggleReadStatus() {
+        this.isRead = !this.isRead;
+    }
 }
 
-function addBookToLibrary(title, author, numPages, isRead) {
-    let newBook = new Book(title, author, numPages, isRead);
-    myLibrary.push(newBook);
+class Library {
+    books = [];
+
+    addBook(newBook) {
+        this.books.push(newBook);
+    }
+
+    removeBook(bookID) {
+        var index = this.books.map(function (e) {
+            return e.id;
+        }).indexOf(bookID);
+        if (index !== -1) {
+            this.books.splice(index, 1);
+        }
+    }
 }
+
+const myLibrary = new Library();
 
 function displayBooks() {
     while (bookContainer.firstChild) {
         bookContainer.removeChild(bookContainer.firstChild);
     }
-    myLibrary.forEach(book => {
+    myLibrary.books.forEach(book => {
         const bookCard = document.createElement("div");
         bookCard.classList.add("card");
 
@@ -59,18 +78,11 @@ function displayBooks() {
 }
 
 function removeArrayElement(bookID) {
-    var index = myLibrary.map(function (e) {
-        return e.id;
-    }).indexOf(bookID);
-    if (index !== -1) {
-        myLibrary.splice(index, 1);
-    }
+    myLibrary.removeBook(bookID);
     displayBooks();
 }
 
-Book.prototype.toggleReadStatus = function () {
-    this.isRead = !this.isRead;
-}
+
 
 const addBookButton = document.querySelector("#add-book");
 const addBookDialog = document.querySelector("#add-book-dialog");
@@ -89,7 +101,8 @@ addBookDialog.addEventListener("close", () => {
         console.log("No return value.");
     }
     else {
-        addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value, bookRead.checked);
+        let newBook = new Book(bookTitle.value, bookAuthor.value, bookPages.value, bookRead.checked);
+        myLibrary.addBook(newBook);
         newBookForm.reset();
         displayBooks();
     }
