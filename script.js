@@ -51,7 +51,8 @@ function displayBooks() {
         deleteButton.textContent = "Remove"
         deleteButton.setAttribute('id', 'remove')
         deleteButton.addEventListener('click', () => {
-            removeArrayElement(deleteButton.parentElement.getAttribute('data-id'));
+            myLibrary.removeBook(deleteButton.parentElement.getAttribute('data-id'));
+            displayBooks();
         });
 
         const toggleReadButton = document.createElement("button");
@@ -76,13 +77,6 @@ function displayBooks() {
         bookContainer.append(bookCard);
     });
 }
-
-function removeArrayElement(bookID) {
-    myLibrary.removeBook(bookID);
-    displayBooks();
-}
-
-
 
 const addBookButton = document.querySelector("#add-book");
 const addBookDialog = document.querySelector("#add-book-dialog");
