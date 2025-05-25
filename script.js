@@ -30,53 +30,53 @@ class Library {
             this.books.splice(index, 1);
         }
     }
+
+    displayBooks() {
+        while (bookContainer.firstChild) {
+            bookContainer.removeChild(bookContainer.firstChild);
+        }
+        myLibrary.books.forEach(book => {
+            const bookCard = document.createElement("div");
+            bookCard.classList.add("card");
+
+            const title = document.createElement("h3");
+            title.textContent = book.title;
+            const information = document.createElement("p");
+            information.textContent = `by ${book.author}, ${book.numPages} pages`;
+
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "Remove"
+            deleteButton.setAttribute('id', 'remove')
+            deleteButton.addEventListener('click', () => {
+                myLibrary.removeBook(deleteButton.parentElement.getAttribute('data-id'));
+                displayBooks();
+            });
+
+            const toggleReadButton = document.createElement("button");
+            toggleReadButton.textContent = book.isRead ? "read" : "unread";
+            toggleReadButton.setAttribute('id', 'read');
+            toggleReadButton.addEventListener('click', () => {
+                book.toggleReadStatus();
+                displayBooks();
+            });
+
+            if (book.isRead) {
+                toggleReadButton.classList.add("read");
+            } else {
+                toggleReadButton.classList.remove("read");
+            }
+            bookCard.setAttribute('data-id', book.id);
+
+            bookCard.appendChild(title);
+            bookCard.appendChild(information);
+            bookCard.appendChild(toggleReadButton);
+            bookCard.appendChild(deleteButton);
+            bookContainer.append(bookCard);
+        });
+    }
 }
 
 const myLibrary = new Library();
-
-function displayBooks() {
-    while (bookContainer.firstChild) {
-        bookContainer.removeChild(bookContainer.firstChild);
-    }
-    myLibrary.books.forEach(book => {
-        const bookCard = document.createElement("div");
-        bookCard.classList.add("card");
-
-        const title = document.createElement("h3");
-        title.textContent = book.title;
-        const information = document.createElement("p");
-        information.textContent = `by ${book.author}, ${book.numPages} pages`;
-
-        const deleteButton = document.createElement("button");
-        deleteButton.textContent = "Remove"
-        deleteButton.setAttribute('id', 'remove')
-        deleteButton.addEventListener('click', () => {
-            myLibrary.removeBook(deleteButton.parentElement.getAttribute('data-id'));
-            displayBooks();
-        });
-
-        const toggleReadButton = document.createElement("button");
-        toggleReadButton.textContent = book.isRead ? "read" : "unread";
-        toggleReadButton.setAttribute('id', 'read');
-        toggleReadButton.addEventListener('click', () => {
-            book.toggleReadStatus();
-            displayBooks();
-        });
-
-        if (book.isRead) {
-            toggleReadButton.classList.add("read");
-        } else {
-            toggleReadButton.classList.remove("read");
-        }
-        bookCard.setAttribute('data-id', book.id);
-
-        bookCard.appendChild(title);
-        bookCard.appendChild(information);
-        bookCard.appendChild(toggleReadButton);
-        bookCard.appendChild(deleteButton);
-        bookContainer.append(bookCard);
-    });
-}
 
 const addBookButton = document.querySelector("#add-book");
 const addBookDialog = document.querySelector("#add-book-dialog");
@@ -98,7 +98,7 @@ addBookDialog.addEventListener("close", () => {
         let newBook = new Book(bookTitle.value, bookAuthor.value, bookPages.value, bookRead.checked);
         myLibrary.addBook(newBook);
         newBookForm.reset();
-        displayBooks();
+        myLibrary.displayBooks();
     }
 });
 
