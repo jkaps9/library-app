@@ -1,154 +1,170 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 
-    background-color: #e6e6e6;
+  background-color: #e6e6e6;
 }
 
 header,
 main {
-    padding: 15px;
-    width: 100%;
-    max-width: 1400px;
+  padding: 15px;
+  width: 100%;
+  max-width: 1400px;
 }
 
 header {
-    flex: 0;
+  flex: 0;
 }
 
 main {
-    flex: 1;
-    position: relative;
+  flex: 1;
+  position: relative;
 }
 
 .sub-header {
-    display: flex;
-    justify-content: space-between;
-    font-size: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
 }
 
-.sub-header>button {
-    appearance: none;
-    border: none;
-    background-color: green;
-    color: white;
-    padding: 10px 28px;
-    border-radius: 10px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
+.sub-header > button {
+  appearance: none;
+  border: none;
+  background-color: green;
+  color: white;
+  padding: 10px 28px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.sub-header>button:hover {
-    background-color: rgb(1, 110, 1);
+.sub-header > button:hover {
+  background-color: rgb(1, 110, 1);
 }
 
 #library-container {
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 25vw));
-    margin-top: 15px;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 25vw));
+  margin-top: 15px;
 }
 
 .card {
-    border: 1px solid gray;
-    border-radius: 5px;
-    padding: 15px 15px 50px;
-    position: relative;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 15px 15px 50px;
+  position: relative;
 }
 
-.card>h3 {
-    margin-bottom: 10px;
+.card > h3 {
+  margin-bottom: 10px;
 }
 
-.card>p {
-    font-style: italic;
-    margin-bottom: 20px;
+.card > p {
+  font-style: italic;
+  margin-bottom: 20px;
 }
 
-.card>button {
-    appearance: none;
-    border: none;
-    border-radius: 10px;
-    font-size: 0.7rem;
-    cursor: pointer;
-    text-transform: uppercase;
-    font-weight: bold;
-    padding: 8px 20px;
-    position: absolute;
+.card > button {
+  appearance: none;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 8px 20px;
+  position: absolute;
 }
 
-.card>button#remove {
-    background-color: pink;
-    color: darkred;
-    bottom: 15px;
-    right: 15px;
+.card > button#remove {
+  background-color: pink;
+  color: darkred;
+  bottom: 15px;
+  right: 15px;
 }
 
-.card>button[id="read"] {
-    bottom: 15px;
-    left: 15px;
-    background-color: #e6e6e6;
+.card > button[id="read"] {
+  bottom: 15px;
+  left: 15px;
+  background-color: #e6e6e6;
 }
 
-.card>button[id="read"].read {
-    color: white;
-    background-color: green;
+.card > button[id="read"].read {
+  color: white;
+  background-color: green;
 }
 
 #add-book-dialog {
-    border: none;
-    border-radius: 10px;
-    padding: 24px 32px;
-    position: absolute;
-    top: 20%;
-    left: 40%;
+  border: none;
+  border-radius: 10px;
+  padding: 24px 32px;
+  position: absolute;
+  top: 20%;
+  left: 40%;
 }
 
-#add-book-dialog>h3 {
-    margin-bottom: 20px;
+#add-book-dialog > h3 {
+  margin-bottom: 20px;
 }
 
 ::backdrop {
-    background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-#add-book-dialog>form {
-    margin: 10px 0;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 10px;
-    justify-items: start;
-    align-items: center;
+#add-book-dialog > form {
+  margin: 10px 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  justify-items: start;
+  align-items: center;
 }
 
-#add-book-dialog>form>label {
-    justify-self: end;
+#add-book-dialog > form > label {
+  justify-self: end;
 }
 
 #add-book-dialog button {
-    appearance: none;
-    border: none;
-    border-radius: 10px;
-    font-size: 0.7rem;
-    cursor: pointer;
-    text-transform: uppercase;
-    font-weight: bold;
-    padding: 8px 20px;
-    justify-self: center;
-    margin-top: 12px;
+  appearance: none;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 8px 20px;
+  justify-self: center;
+  margin-top: 12px;
 }
 
 #add-book-dialog button#confirm {
-    background-color: green;
-    color: white;
+  background-color: green;
+  color: white;
+}
+
+/* error message styles */
+.error {
+  width: 100%;
+  padding: 0;
+  font-size: 80%;
+  color: white;
+  background-color: #900;
+  border-radius: 0 0 5px 5px;
+
+  box-sizing: border-box;
+}
+
+.error.active {
+  padding: 0.3em;
 }
