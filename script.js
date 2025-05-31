@@ -53,7 +53,7 @@ class Library {
         myLibrary.removeBook(
           deleteButton.parentElement.getAttribute("data-id")
         );
-        displayBooks();
+        myLibrary.displayBooks();
       });
 
       const toggleReadButton = document.createElement("button");
@@ -61,7 +61,7 @@ class Library {
       toggleReadButton.setAttribute("id", "read");
       toggleReadButton.addEventListener("click", () => {
         book.toggleReadStatus();
-        displayBooks();
+        myLibrary.displayBooks();
       });
 
       if (book.isRead) {
