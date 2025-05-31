@@ -20,35 +20,41 @@
       </div>
       <dialog id="add-book-dialog" closedby="closerequest">
         <h3>Add a book to your library</h3>
-        <form>
-          <label for="title">
-            <span>Title</span>
-            <input type="text" id="title" name="title" required />
-            <span class="error" aria-live="polite"></span>
-          </label>
-
-          <label for="author">
-            <span>Author</span>
-            <input type="text" id="author" name="author" required />
-            <span class="error" aria-live="polite"></span>
-          </label>
-
-          <label for="pages">
-            <span>Pages</span>
-            <input
-              type="number"
-              id="pages"
-              name="pages"
-              min="1"
-              step="1"
-              value="1"
-            />
-            <span class="error" aria-live="polite"></span>
-          </label>
-
-          <label for="isRead">Read</label>
-          <input type="checkbox" id="isRead" value="isRead" />
-
+        <form novalidate>
+          <p>
+            <label for="title">
+              <span>Title</span>
+              <input type="text" id="title" name="title" required />
+              <span class="error" aria-live="polite"></span>
+            </label>
+          </p>
+          <p>
+            <label for="author">
+              <span>Author</span>
+              <input type="text" id="author" name="author" required />
+              <span class="error" aria-live="polite"></span>
+            </label>
+          </p>
+          <p>
+            <label for="pages">
+              <span>Pages</span>
+              <input
+                type="number"
+                id="pages"
+                name="pages"
+                min="1"
+                step="1"
+                value="1"
+              />
+              <span class="error" aria-live="polite"></span>
+            </label>
+          </p>
+          <p class="inline-block">
+            <label for="isRead"
+              >Read
+              <input type="checkbox" id="isRead" value="isRead" />
+            </label>
+          </p>
           <button id="cancel" value="cancel" formmethod="dialog">Cancel</button>
           <button id="confirm" value="default">Confirm</button>
         </form>

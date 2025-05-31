@@ -168,3 +168,15 @@ main {
 .error.active {
   padding: 0.3em;
 }
+
+form p * {
+  display: block;
+}
+
+p.inline-block {
+  align-self: end;
+}
+
+p.inline-block * {
+  display: inline-block;
+}

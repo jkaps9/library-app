@@ -87,17 +87,19 @@ const addBookDialog = document.querySelector("#add-book-dialog");
 const confirmButton = addBookDialog.querySelector("#confirm");
 const cancelButton = addBookDialog.querySelector("#cancel");
 const newBookForm = addBookDialog.querySelector("form");
+
 const bookTitle = addBookDialog.querySelector("#title");
+const titleError = document.querySelector("#title + span.error");
 const bookAuthor = addBookDialog.querySelector("#author");
+const authorError = document.querySelector("#author + span.error");
 const bookPages = addBookDialog.querySelector("#pages");
+const pagesError = document.querySelector("#pages + span.error");
 const bookRead = addBookDialog.querySelector("#isRead");
 
 addBookButton.addEventListener("click", () => addBookDialog.showModal());
 
 addBookDialog.addEventListener("close", () => {
-  if (addBookDialog.returnValue !== "default") {
-    console.log("No return value.");
-  } else {
+  if (addBookDialog.returnValue === "default") {
     let newBook = new Book(
       bookTitle.value,
       bookAuthor.value,
@@ -107,17 +109,14 @@ addBookDialog.addEventListener("close", () => {
     myLibrary.addBook(newBook);
     newBookForm.reset();
     myLibrary.displayBooks();
-  }
-});
+    titleError.textContent = "";
+    titleError.className = "error";
 
-confirmButton.addEventListener("click", (e) => {
-  e.preventDefault();
-  if (bookTitle.value === "") {
-    alert("missing book title");
-  } else if (bookAuthor.value === "") {
-    alert("missing author");
-  } else {
-    addBookDialog.close("default");
+    authorError.textContent = "";
+    authorError.className = "error";
+
+    pagesError.textContent = "";
+    pagesError.className = "error";
   }
 });
 
@@ -125,3 +124,40 @@ cancelButton.addEventListener("click", (e) => {
   e.preventDefault();
   addBookDialog.close("cancel");
 });
+
+newBookForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (
+    !bookTitle.validity.valid ||
+    !bookAuthor.validity.valid ||
+    !bookPages.validity.valid
+  ) {
+    showError();
+  } else {
+    addBookDialog.close("default");
+  }
+});
+
+function showError() {
+  if (bookTitle.validity.valueMissing) {
+    titleError.textContent = "Please enter a title";
+  }
+
+  if (bookAuthor.validity.valueMissing) {
+    authorError.textContent = "Please enter an author";
+  }
+
+  if (bookPages.validity.rangeUnderflow) {
+    pagesError.textContent = "Must be at least 1 page";
+  }
+
+  if (!bookTitle.validity.valid) {
+    titleError.className = "error active";
+  }
+  if (!bookAuthor.validity.valid) {
+    authorError.className = "error active";
+  }
+  if (!bookPages.validity.valid) {
+    pagesError.className = "error active";
+  }
+}
