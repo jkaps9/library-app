@@ -1,52 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
     <script src="./script.js" defer></script>
     <title>Library App</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <h1>My Library</h1>
+      <h1>My Library</h1>
     </header>
 
     <main>
-        <div class="sub-header">
-            <h2>My Books</h2>
-            <button type="button" id="add-book">Add Book</button>
-        </div>
-        <dialog id="add-book-dialog" closedby="closerequest">
-            <h3>Add a book to your library</h3>
-            <form>
+      <div class="sub-header">
+        <h2>My Books</h2>
+        <button type="button" id="add-book">Add Book</button>
+      </div>
+      <dialog id="add-book-dialog" closedby="closerequest">
+        <h3>Add a book to your library</h3>
+        <form>
+          <label for="title">Title</label>
+          <input type="text" id="title" name="title" required />
 
-                <label for="title">Title</label>
-                <input type="text" id="title" name="title" required>
+          <label for="author">Author</label>
+          <input type="text" id="author" name="author" required />
 
+          <label for="pages">Pages</label>
+          <input
+            type="number"
+            id="pages"
+            name="pages"
+            min="1"
+            step="1"
+            value="1"
+          />
 
-                <label for="author">Author</label>
-                <input type="text" id="author" name="author" required>
+          <label for="isRead">Read</label>
+          <input type="checkbox" id="isRead" value="isRead" />
 
-
-                <label for="pages">Pages</label>
-                <input type="number" id="pages" name="pages" min="1" step="1" value="1">
-
-
-                <label for="isRead">Read</label>
-                <input type="checkbox" id="isRead" value="isRead">
-
-
-                <button id="cancel" value="cancel" formmethod="dialog">Cancel</button>
-                <button id="confirm" value="default">Confirm</button>
-            </form>
-        </dialog>
-        <div id="library-container">
-
-        </div>
+          <button id="cancel" value="cancel" formmethod="dialog">Cancel</button>
+          <button id="confirm" value="default">Confirm</button>
+        </form>
+      </dialog>
+      <div id="library-container"></div>
     </main>
-</body>
-
+  </body>
 </html>
