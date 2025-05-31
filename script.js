@@ -161,3 +161,30 @@ function showError() {
     pagesError.className = "error active";
   }
 }
+
+bookTitle.addEventListener("input", (event) => {
+  if (bookTitle.validity.valid) {
+    titleError.textContent = "";
+    titleError.className = "error";
+  } else {
+    showError();
+  }
+});
+
+bookAuthor.addEventListener("input", (event) => {
+  if (bookAuthor.validity.valid) {
+    authorError.textContent = "";
+    authorError.className = "error";
+  } else {
+    showError();
+  }
+});
+
+bookPages.addEventListener("input", (event) => {
+  if (bookPages.validity.valid) {
+    pagesError.textContent = "";
+    pagesError.className = "error";
+  } else {
+    showError();
+  }
+});
